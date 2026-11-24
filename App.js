@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// IMPORTANTE: Debe ir en la primera línea absoluta antes de cualquier import de React.
+// Inicializa los gestos nativos (ej. deslizar para regresar) en el hilo principal de la app.
+import 'react-native-gesture-handler';
+import React from 'react';
+// Contenedor principal que administra el historial, estado de pantallas y enlaces (Deep Linking).
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigation/AppNavigator';
 
-export default function App() {
+// Usamos arrow function (const + =>) para mantener el estándar ES6+ y evitar problemas con 'this'.
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // Todos los navegadores de React Navigation deben vivir dentro de NavigationContainer.
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
